@@ -847,29 +847,62 @@ print(sorted(list2, key = lambda item: item[1]))
 #In the object we specify the keys
 #And in the class we will specify the values (like how much health)
 
-class Monster:
-    health = 90
-    energy = 40
-
-    # A method always needs at least 1 arg
-    def attack(monster, amount):
-        print('The monster has attacked!')
-        print(f'{amount} of damage was dealt')
-
-monster = Monster()
-monster.attack(40)
+# class Monster:
+#     health = 90
+#     energy = 40
+#
+#     # A method always needs at least 1 arg
+#     def attack(self, amount):
+#         print('The monster has attacked!')
+#         print(f'The monster used 10 energy')
+#         monster.energy -= 10
+#         print(f'{amount} damage was dealt')
+#
+#     def move(self, speed):
+#         print(f'Moved with a speed of {speed}')
+#
+# monster = Monster()
+# monster.attack(40)
+# monster.move(20)
+#
+# monster2 = Monster()
+# monster2.attack(20)
 
 #---------------------------------------------------------------------------------------#
 #----------------#
 #----Dunder methods----#
 #----------------#
 
+class Monster:
 
-#---------------------------------------------------------------------------------------#
-#----------------#
-#----Scope----#
-#----------------#
+    def __init__(self,health,energy):
+        self.health = health
+        self.energy = energy
+        print('The monster was created')
 
+    #gives back the amount of health
+    def __len__(self):
+        return self.health
+
+    #gives back the amount of energy
+    def __abs__(self):
+        return self.energy
+
+    def __str__(self):
+        return f'A monster with health {self.health} and energy {self.energy}'
+
+    # A method always needs at least 1 arg
+    def attack(self, amount):
+        print('The monster has attacked!')
+        print(f'The monster used 10 energy')
+        self.energy -= 10
+        print(f'{amount} damage was dealt')
+
+    def move(self, speed):
+        print(f'Moved with a speed of {speed}')
+
+monster1 = Monster(health=100, energy=55)
+print(monster1)
 
 #---------------------------------------------------------------------------------------#
 #----------------#
