@@ -840,10 +840,24 @@ print(sorted(list2, key = lambda item: item[1]))
 
 #---------------------------------------------------------------------------------------#
 #----------------#
-#----Classes----#
+#----Objects & Classes----#
 #----------------#
+#A object is the product from a class.
+#The class is the blueprint for the object.
+#In the object we specify the keys
+#And in the class we will specify the values (like how much health)
 
+class Monster:
+    health = 90
+    energy = 40
 
+    # A method always needs at least 1 arg
+    def attack(monster, amount):
+        print('The monster has attacked!')
+        print(f'{amount} of damage was dealt')
+
+monster = Monster()
+monster.attack(40)
 
 #---------------------------------------------------------------------------------------#
 #----------------#
