@@ -757,34 +757,92 @@ chess_board1 = [[f'{letter}{num}' for num in range(1,9)] for letter in 'ABCDEFGH
 for row in chess_board1:
     print(row)
 
+#Other comprehension
+#dict_comp = (num:num for num in range(10))
+dict_comp = {num: num for num in range(100)}
+print(f'dict Comp: {dict_comp}')
+
+#set_comp = {num for num in range(10)}
+set_comp = {num for num in range(100)}
+print(f'Set Comp: {set_comp}')
+
+#tuple_comp = tuple(num for num in range(10))
+tuple_comp = tuple(num for num in range(100))
+print(f'Tuple Comp: {tuple_comp}')
+
+exercise_comp = {letter:[1,2,3,4,5]  for letter in 'ABCDE'}
+print(exercise_comp)
 #---------------------------------------------------------------------------------------#
 #----------------#
 #----Sorting data----#
 #----------------#
 
+list1 = [4,2,3,1,5]
+print(sorted(list1, reverse=True))
+
+list2 = [('a', 3), ('b', 10), ('c', 6), ('d', 5)]
+def sort_func(item):
+    return item[1]
+print(sorted(list2, key= sort_func))
+print(sorted(list2, key = lambda item: item[1]))
 
 #---------------------------------------------------------------------------------------#
 #----------------#
 #----Map and Filter----#
 #----------------#
 
+#Can use list comp instead of this.
 
 #---------------------------------------------------------------------------------------#
 #----------------#
 #----File handling----#
 #----------------#
 
+#Open and close manually
+# file = open('text.txt')
+# print(file.read())
+# file.close()
+#
+# #Open and close automatically
+# with open('text.txt') as file:
+#     #print(file.read())
+#     for line in list(file):
+#         print(line)
 
+#add text to some file
+# with open('text.txt', 'a') as file:
+#     file.writelines('\nXXXXXXXXXHello WorldXXXXXXXXXXX')
+#
+# #New file:
+# with open('tree.txt', 'w') as file:
+#     file.writelines('     X     \n'
+#                     '    XXX    \n'
+#                     '   XXXXX   \n'
+#                     '     X     \n')
 #---------------------------------------------------------------------------------------#
 #----------------#
 #----Deleting data----#
 #----------------#
 
+# a = 1
+# del a
+
+# a = [1,2,3]
+#
+# # del a[1]
+# #
+# # print(a)
+#
+# a.remove(3)
+# print(a)
+# a.pop(-1)
+# print(a)
 
 #---------------------------------------------------------------------------------------#
 #----------------#
 #----Classes----#
 #----------------#
+
 
 
 #---------------------------------------------------------------------------------------#
