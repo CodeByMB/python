@@ -536,8 +536,10 @@ def better_calc(num1, num2, operator):
     else:
         print('Mwah wwah')
 
+
 better_calc(5, 2, '+')
 better_calc(20, 4, '-')
+
 
 #What if you don't know the number of arguments?
 #You can use *args as parameter when you don't know how many arguments will return
@@ -552,19 +554,22 @@ def list_unpacking(first, *args, extra):
     for arg in args:
         print(arg)
 
+
 #keyword unpacking
 def print_more(**kwargs):
     print(kwargs)
     for key, value in kwargs.items():
         print(f'{key} = {value}')
 
+
 def print_even_more(*args, **kwargs):
     print(args)
     print(kwargs)
 
+
 # list_unpacking(1, 2, 3, 'HENK', 1, 55, extra = 213)
 # print_more(arg1=1, arg2='Test', arg3=3, arg4=[1, 2, 3])
-print_even_more(1, 2, 3, 4, 5, 'hello', True, test = 1, test2 = 5)
+print_even_more(1, 2, 3, 4, 5, 'hello', True, test=1, test2=5)
 
 ''' 
 In short:
@@ -572,11 +577,13 @@ In short:
 **kwargs are used for unlimited keyword arguments (Key:value pairs)
 '''
 
+
 def calcu(*args):
     result = sum(args)
     print(result)
 
-calcu(1,5,4,3,6,7,6)
+
+calcu(1, 5, 4, 3, 6, 7, 6)
 #---------------------------------------------------------------------------------------#
 #----------------#
 #----Scope----#
@@ -603,13 +610,15 @@ But they cannot be changed(or created)
 You can move between scopes with parameters,
 Global and return but only use it when needed!
 '''
-a = 10 #Global scope
+a = 10  #Global scope
+
 
 #Dont use it like this to access global variables.
 def test_func():
-    global a #<-- Don't use this :)
-    a += 5 #Local scope
+    global a  #<-- Don't use this :)
+    a += 5  #Local scope
     print(a)
+
 
 test_func()
 
@@ -639,11 +648,13 @@ print the return value of the function.
 multiplier = 5
 has_calculated = False
 
+
 def multiply_calculator(nummer1):
     global has_calculated
     has_calculated = True
     result = nummer1 * multiplier
     return result
+
 
 print(multiply_calculator(10))
 print(has_calculated)
@@ -657,11 +668,11 @@ print(has_calculated)
 #example_1: lambda parameter:expression
 #example_2: lambda x:x+1   #x is automatically returned.
 
-a = lambda x:x+1
+a = lambda x: x + 1
 print(a(10))
 
-simple_calc = lambda a,b: a + b
-print(simple_calc(2,3))
+simple_calc = lambda a, b: a + b
+print(simple_calc(2, 3))
 
 #when will you use a lambda functions
 #Some functions want other functions as argument
@@ -748,12 +759,12 @@ You can also hint at what types of data you expect for the parameters and the re
 #combine list comp
 
 #my code
-chess_board = [[(chr(x), y) for x in range(65, 73)] for y in range (8, 0, -1)]
+chess_board = [[(chr(x), y) for x in range(65, 73)] for y in range(8, 0, -1)]
 for row in chess_board:
     print(row)
 
 #course code:
-chess_board1 = [[f'{letter}{num}' for num in range(1,9)] for letter in 'ABCDEFGH'[::-1]]
+chess_board1 = [[f'{letter}{num}' for num in range(1, 9)] for letter in 'ABCDEFGH'[::-1]]
 for row in chess_board1:
     print(row)
 
@@ -770,21 +781,26 @@ print(f'Set Comp: {set_comp}')
 tuple_comp = tuple(num for num in range(100))
 print(f'Tuple Comp: {tuple_comp}')
 
-exercise_comp = {letter:[1,2,3,4,5]  for letter in 'ABCDE'}
+exercise_comp = {letter: [1, 2, 3, 4, 5] for letter in 'ABCDE'}
 print(exercise_comp)
 #---------------------------------------------------------------------------------------#
 #----------------#
 #----Sorting data----#
 #----------------#
 
-list1 = [4,2,3,1,5]
+list1 = [4, 2, 3, 1, 5]
 print(sorted(list1, reverse=True))
 
 list2 = [('a', 3), ('b', 10), ('c', 6), ('d', 5)]
+
+
 def sort_func(item):
     return item[1]
-print(sorted(list2, key= sort_func))
-print(sorted(list2, key = lambda item: item[1]))
+
+
+print(sorted(list2, key=sort_func))
+print(sorted(list2, key=lambda item: item[1]))
+
 
 #---------------------------------------------------------------------------------------#
 #----------------#
@@ -873,23 +889,48 @@ print(sorted(list2, key = lambda item: item[1]))
 #----Dunder methods----#
 #----------------#
 
+# class Monster:
+#
+#     def __init__(self,health,energy):
+#         self.health = health
+#         self.energy = energy
+#         print('The monster was created')
+#
+#     #gives back the amount of health
+#     def __len__(self):
+#         return self.health
+#
+#     #gives back the amount of energy
+#     def __abs__(self):
+#         return self.energy
+#
+#     def __str__(self):
+#         return f'A monster with health {self.health} and energy {self.energy}'
+#
+#     # A method always needs at least 1 arg
+#     def attack(self, amount):
+#         print('The monster has attacked!')
+#         print(f'The monster used 10 energy')
+#         self.energy -= 10
+#         print(f'{amount} damage was dealt')
+#
+#     def move(self, speed):
+#         print(f'Moved with a speed of {speed}')
+#
+# monster1 = Monster(health=100, energy=55)
+# print(monster1)
+
+#---------------------------------------------------------------------------------------#
+#----------------#
+#----Simple inheritance----#
+#----------------#
+
 class Monster:
 
-    def __init__(self,health,energy):
+    def __init__(self, health, energy):
         self.health = health
         self.energy = energy
         print('The monster was created')
-
-    #gives back the amount of health
-    def __len__(self):
-        return self.health
-
-    #gives back the amount of energy
-    def __abs__(self):
-        return self.energy
-
-    def __str__(self):
-        return f'A monster with health {self.health} and energy {self.energy}'
 
     # A method always needs at least 1 arg
     def attack(self, amount):
@@ -901,20 +942,29 @@ class Monster:
     def move(self, speed):
         print(f'Moved with a speed of {speed}')
 
-monster1 = Monster(health=100, energy=55)
-print(monster1)
 
-#---------------------------------------------------------------------------------------#
-#----------------#
-#----Simple inheritance----#
-#----------------#
+class Shark(Monster):
+    def __init__(self, health, energy, speed):
+        # OLD WAY:
+        # Monster.__init__(self, health, energy)
+
+        # NEW WAY: (Super gets the parent)
+        super().__init__(health, energy)
+        super().move(10)
+        self.speed = speed
+
+    def bite(self):
+        print(f'Shark used Bite!')
+
+    def move(self):
+        print('The shark has moved')
+        print(f'Moved with a speed of {self.speed}')
 
 
-#---------------------------------------------------------------------------------------#
-#----------------#
-#----Complex Inheritance----#
-#----------------#
-
+shark = Shark(5, 10, 120)
+shark.bite()
+shark.attack(20)
+shark.move()
 
 #---------------------------------------------------------------------------------------#
 #----------------#
